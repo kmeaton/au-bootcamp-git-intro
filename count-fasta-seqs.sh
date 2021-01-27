@@ -94,3 +94,7 @@ echo "$@"
 #
 # ADD YOUR CODE BELOW:
 
+for  filepath in "$@"
+do
+	sh count-fasta-seqs.sh example-seqs1.fasta example-seqs2.fasta
+done
