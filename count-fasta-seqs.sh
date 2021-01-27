@@ -3,9 +3,15 @@
 # How this script should behave:
 #
 # INPUT:   Paths to one or more fasta sequence files
-for file in *.fasta; do 
-	grep ">" $file | wc -l 
-done	
+for file in "$@"; do 
+	seqnum=`grep ">" $file | wc -l`
+	name=`basename $file`
+	echo "$seqnum $name"
+	seqtotal=`expr $seqtotal + $seqnum`
+done
+
+echo $seqtotal
+
 # OUTPUT:  For each file, it should write a line with the number of sequences
 #          in the file, a space, and then the file NAME (NOT the path!), and a
 #          final line with the total number of sequences across all files.
@@ -96,7 +102,3 @@ echo "$@"
 #
 # ADD YOUR CODE BELOW:
 
-for  filepath in "$@"
-do
-	sh count-fasta-seqs.sh example-seqs1.fasta example-seqs2.fasta
-done
