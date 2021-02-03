@@ -99,6 +99,7 @@ seqtotal=0
 for file in "$@"
 do
 	seqnum=`grep ">" $file | wc -l`
+	seqnum=$((seqnum))
 	name=`basename $file`
 	echo "$seqnum $name"
 	seqtotal=`expr $seqtotal + $seqnum`
